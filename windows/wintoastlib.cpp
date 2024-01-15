@@ -748,7 +748,7 @@ ComPtr<IToastNotifier> WinToast::notifier(_In_ bool* succeded) const  {
 	ComPtr<IToastNotifier> notifier;
 	HRESULT hr = DllImporter::Wrap_GetActivationFactory(WinToastStringWrapper(RuntimeClass_Windows_UI_Notifications_ToastNotificationManager).Get(), &notificationManager);
 	if (SUCCEEDED(hr)) {
-		hr = notificationManager->CreateToastNotifierWithId(WinToastStringWrapper(_aumi).Get(), &notifier);
+		hr = notificationManager->CreateToastNotifierWithId(&notifier);
 	}
 	*succeded = SUCCEEDED(hr);
 	return notifier;
