@@ -192,6 +192,7 @@ void LocalNotifierPlugin::Notify(
   toast.setTextField(converter.from_bytes(title), WinToastTemplate::FirstLine);
   toast.setTextField(converter.from_bytes(body), WinToastTemplate::SecondLine);
 
+
   for (flutter::EncodableValue action_value : actions) {
     flutter::EncodableMap action_map =
         std::get<flutter::EncodableMap>(action_value);
@@ -211,7 +212,6 @@ void LocalNotifierPlugin::Notify(
       flutter::EncodableValue(identifier);
   channel->InvokeMethod("onLocalNotificationShow",
                         std::make_unique<flutter::EncodableValue>(args2));
-
   result->Success(flutter::EncodableValue(true));
 }
 
